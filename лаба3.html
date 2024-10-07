@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1><p align = "center">Свяжитесь с нами</p></h1>
+    <form id="Form">
+      <label for="name">Имя:</label>
+      <input type="text" id="name" name="name"><br><br>
+    
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email"><br><br>
+    
+      <label for="message">Сообщение:</label>
+      <textarea id="message" name="message"></textarea><br><br>
+    
+      <button type="submit">Отправить</button>
+    </form>
+    
+    <p id="response"></p>
+    <script>
+        document.getElementById("Form").addEventListener("submit", function(event) {
+    event.preventDefault();
+    
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+    let message = document.getElementById("message").value;
+    let response = document.getElementById("response");
+    
+    if (name === "" || email === "" || message === ""){
+        response.innerText = "Заполните все поля!";
+    } else if (!email.includes("@")) {
+        response.innerText = "Введите корректный email!";
+    } else if (message.length < 15) {
+        response.innerText = "Минимум 15 символов!";
+    }else{
+        response.innerText = "Спасибо за обратную связь, " + name + "!" + "<3";
+    }
+    });
+    </script>
+</body>
+</html>
