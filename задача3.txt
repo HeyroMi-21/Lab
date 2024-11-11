@@ -1,0 +1,45 @@
+#include <iostream> 
+using namespace std; 
+int main() { 
+    int N; 
+    int val; 
+    setlocale(LC_ALL, "RUS"); 
+    cout << "Введите размерность массива (N): "; 
+    cin >> N; 
+    cout << "Введите начальное значение: "; 
+    cin >> val; 
+ 
+    int** m = new int* [N];  
+    for (int i = 0; i < N; ++i) { 
+        m[i] = new int[N](); 
+    } 
+    int value = val; 
+    for (int col = 0; col < N; ++col) { 
+        int startCol = col; 
+        int startRow = 0; 
+ 
+        while (startCol >= 0) { 
+            m[startRow][startCol] = value++; 
+            startCol--; 
+            startRow++; 
+        } 
+    } 
+ 
+    for (int row = 1; row < N; ++row) { 
+        int startRow = row; 
+        int startCol = N - 1; 
+ 
+        while (startRow < N) { 
+            m[startRow][startCol] = value++; 
+            startRow++; 
+            startCol--; 
+        } 
+    } 
+    for (int i = 0; i < N; ++i) { 
+        for (int j = 0; j < N; ++j) { 
+            cout << m[i][j] << " "; 
+        } 
+        cout << endl;  
+    } 
+    return 0; 
+}
